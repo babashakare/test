@@ -1,0 +1,145 @@
+    .ss-h1 {
+      margin-bottom: 0.2em;
+      font-weight: 700;
+      text-align: center;
+      font-size: 1.6rem;
+    }
+    #ss-countdowns, #ss-shortcode-use-area {
+      width: 100%;
+      max-width: 350px;
+      margin-top: 10px;
+    }
+    .ss-timer {
+      background: rgba(255 255 255 / 0.12);
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 8px 15px rgb(0 0 0 / 0.2);
+      transition: background-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      user-select: none;
+    }
+    .ss-timer.expired {
+      background: rgba(255, 77, 94, 0.85);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 0 20px 3px rgba(255, 77, 94, 0.4);
+    }
+    .ss-timer h2, .ss-timer .ss-h2 {
+      font-size: 1.25rem;
+      margin: 0 0 8px 0;
+    }
+    .ss-time-left {
+      font-size: 1.3rem;
+      font-weight: 600;
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 0.1em;
+    }
+    .ss-message {
+      font-size: 1rem;
+      margin-top: 8px;
+      color: #ffd700;
+      font-weight: 700;
+    }
+    .ss-shortcode {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      font-family: monospace;
+      background: rgba(255 255 255 / 0.2);
+      padding: 4px 8px;
+      border-radius: 6px;
+      user-select: text;
+      cursor: text;
+    }
+    .ss-form {
+      margin-top: 16px;
+      width: 100%;
+      max-width: 350px;
+      background: rgba(255 255 255 / 0.15);
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgb(0 0 0 / 0.15);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .ss-label {
+      flex: 1 1 100%;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #f0f0f0cc;
+      font-size: 1rem;
+    }
+    .ss-input-date {
+      flex: 1 1 auto;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+      outline-offset: 2px;
+      outline-color: #85d7ff;
+      margin-right: 10px;
+      max-width: 150px;
+      background: #fff;
+      color: #333;
+    }
+    .ss-button {
+      background: #89f7fe;
+      background: linear-gradient(45deg, #66a6ff, #89f7fe);
+      border: none;
+      border-radius: 8px;
+      color: #222;
+      font-weight: 700;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      flex: 0 0 auto;
+      font-size: 1rem;
+      box-shadow: 0 4px 8px rgb(102 166 255 / 0.7);
+    }
+    .ss-button:hover, .ss-button:focus {
+      background: linear-gradient(45deg, #557ce6, #5ee7ff);
+      outline: none;
+    }
+    #ss-shortcode-use-area {
+      margin-top: 20px;
+      background: rgba(255 255 255 / 0.1);
+      padding: 10px 15px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgb(0 0 0 / 0.2);
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    #ss-shortcode-use-area h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 400px) {
+    .ss-body {
+        padding: 10px;
+      }
+      .ss-time-left {
+        font-size: 1.1rem;
+      }
+      .ss-h1 {
+        font-size: 1.3rem;
+      }
+      .ss-form {
+        padding: 12px 15px;
+      }
+      .ss-input-date {
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+        flex: 1 1 100%;
+      }
+      .ss-button {
+        width: 100%;
+      }
+    }

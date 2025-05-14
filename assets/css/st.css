@@ -1,0 +1,157 @@
+.number1 {
+        margin-left: 15px; /* یا padding */
+    }
+.title2 {
+  color: #45f882;
+  font-weight: bold;
+  text-align: center;
+  font-size: 200px;
+  text-shadow: 0 0 12px #66ff99; /* سایه سبز روشن مئونی */
+}
+.title3 {
+    font-family: 'Vazir', Tahoma, Arial, sans-serif;
+    color: var(--tg-theme-primary);
+    text-align: center;
+    user-select: none;
+    letter-spacing: 0.05em;
+	font-size: 47px;
+	margin: 0 0 10px 0;
+	font-family: var(--tg-heading-font-family);
+	font-weight: var(--tg-fw-extra-bold);
+	text-transform: uppercase;
+    }
+.title4 {
+    font-family: 'Vazir', Tahoma, Arial, sans-serif;
+    color: var(--tg-theme-secondary);
+    text-align: center;
+    user-select: none;
+    letter-spacing: 0.05em;
+	font-size: 47px;
+	margin: 0 0 10px 0;
+	font-family: var(--tg-heading-font-family);
+	font-weight: var(--tg-fw-extra-bold);
+	text-transform: uppercase;
+    }
+.title5 {
+  font-family: 'Vazir', Tahoma, Arial, sans-serif;
+  color: #45f882;
+  font-weight: bold;
+  font-size: 40px;
+  text-shadow: 0 0 12px #66ff99; /* سایه سبز روشن مئونی */
+}
+.title6 {
+  font-family: 'Vazir', Tahoma, Arial, sans-serif;
+  color: #fcd730;
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 0 0 12px #fcd730; /* سایه سبز روشن مئونی */
+}
+.title7 {
+  font-family: 'Vazir', Tahoma, Arial, sans-serif;
+  color: var(--tg-theme-secondary);
+  font-weight: bold;
+  font-size: 40px;
+  text-shadow: 0 0 12px var(--tg-theme-secondary); /* سایه سبز روشن مئونی */
+}
+.title8 {
+  font-family: 'Vazir', Tahoma, Arial, sans-serif;
+  color: #fcd730;
+  font-weight: bold;
+  font-size: 20px;
+}
+.title9 {
+  color: var(--tg-theme-primary);
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 0 0 12px var(--tg-theme-primary); /* سایه سبز روشن مئونی */
+}
+.title10 {
+  color: var(--tg-theme-primary);
+  font-weight: bold;
+  font-size: 30px;
+  text-shadow: 0 0 4px var(--tg-theme-primary); /* سایه سبز روشن مئونی */
+}
+.title11 {
+  font-family: 'Vazir', Tahoma, Arial, sans-serif;
+  color: #fcd730;
+  font-weight: bold;
+  font-size: 25px;
+  text-shadow: 0 0 4px #fcd730; /* سایه سبز روشن مئونی */
+}
+.title12 {
+  color: var(--tg-theme-primary);
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 0 0 12px var(--tg-theme-primary); /* سایه سبز روشن مئونی */
+}
+.title13 {
+  color: #fcd730;
+  font-weight: bold;
+  font-size: 15px;
+  text-shadow: 0 0 12px #fcd730; /* سایه سبز روشن مئونی */
+  text-align: center;
+}
+.num1 {
+  color: #fcd730;
+  font-weight: bold;
+  font-size: 15px;
+}
+.text1 {
+  color: with;
+  font-weight: bold;
+  font-size: 20px;
+}
+.text2 {
+  color: #fcd730;
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: 0 0 2px #fc8f30; /* سایه سبز روشن مئونی */
+}
+.text3 {
+  color: #fcd730;
+  font-weight: bold;
+  font-size: 20px;
+}
+.off2 {
+  font-family: 'Vazir', Tahoma, Arial, sans-serif;
+  font-size: 100%;
+  margin: 0 20px 0 0;
+  font-family: var(--tg-heading-font-family);
+  font-weight: var(--tg-fw-extra-bold);
+  text-transform: uppercase;
+  color: #FFD700;
+  text-align: center;
+    }
+.off1 {
+  font-family: 'Vazir', Tahoma, Arial, sans-serif;
+  font-size: 100%;
+  margin: 0 20px 0 0;
+  font-family: var(--tg-heading-font-family);
+  font-weight: var(--tg-fw-extra-bold);
+  text-transform: uppercase;
+  color: var(--tg-theme-primary);
+  text-align: center;
+    }
+.dx {
+	margin: 10% 0 0 0;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	align-items: center;
+	}
+.on {
+  font-family: 'Vazir', Tahoma, Arial, sans-serif;
+  color: var(--tg-theme-primary);
+  font-weight: bold;
+  font-size: 15px;
+  text-shadow: 0 0 12px var(--tg-theme-primary); /* سایه سبز روشن مئونی */
+}
+.off {
+  font-family: 'Vazir', Tahoma, Arial, sans-serif;
+  color: red;
+  font-weight: bold;
+  font-size: 15px;
+  text-shadow: 0 0 12px red; /* سایه سبز روشن مئونی */
+}
