@@ -4,14 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نمایش اطلاعات از Google Sheets</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
     <div id="data-container">
-        <h2>پرداختی ها</h2>
-        <div id="results"></div>
+        <h2>داده‌های Google Sheets</h2>
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>تاریخ</th>
+                    <th>نام کاربری</th>
+                    <th>بج نامبر</th>
+                    <th>میزان پرداخت</th>
+                </tr>
+            </thead>
+            <tbody id="results"></tbody>
+        </table>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT8iGURYuLh2FqrlnZhYncz7AuUtN-nR8T1IAJDMAa6o9awn7jlmcGFWz9Wn8dKIxlSLqOBMxOL3vIe/pubhtml'; // لینک منتشر شده را اینجا قرار دهید
+
+        async function fetchData() {
+            const response = await fetch(SHEET_URL);
+            const data = await response.text();
+            const parsedData = new window.DOMParser().parseFromString(data, "text/html");
+            const rows = parsedData.querySelectorAll("table tbody tr");
+            let resultsHtml = '';
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll("td");
+                resultsHtml += '<tr>';
+                cells.forEach(cell => {
+                    resultsHtml += `<td>${cell.innerText}</td>`;
+                });
+                resultsHtml += '</tr>';
+            });
+
+            document.getElementById('results').innerHTML = resultsHtml;
+        }
+
+        // بارگذاری داده‌ها
+        fetchData();
+    </script>
 </body>
 </html>
