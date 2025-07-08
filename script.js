@@ -1,5 +1,5 @@
 const SHEET_ID = '140jA1gwOT9sDSnbqG6n4ImvMzeBqOlqQVDkx-E2fsLc';
-const API_KEY = 'AIzaSyCqTK7h_iC0y4PvoKs8kplrMsIbyMY-kZ0'; // کلید API شما
+const API_KEY = 'AIzaSyAkTDOns4sNSIcEPorcfN_fgutXIoYNZ18'; // کلید API شما
 const RANGE = 'Sheet1!A2:D5'; // نام شیت و رنج داده‌ها
 
 function fetchData() {
