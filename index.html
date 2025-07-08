@@ -45,14 +45,15 @@
             const rows = parsedData.querySelectorAll("table tbody tr");
             let resultsHtml = '';
 
-            rows.forEach(row => {
-                const cells = row.querySelectorAll("td");
+            // فقط ردیف‌های 2 تا 5 را نمایش می‌دهیم
+            for (let i = 1; i < Math.min(rows.length, 5); i++) {
+                const cells = rows[i].querySelectorAll("td");
                 resultsHtml += '<tr>';
                 cells.forEach(cell => {
                     resultsHtml += `<td>${cell.innerText}</td>`;
                 });
                 resultsHtml += '</tr>';
-            });
+            }
 
             document.getElementById('results').innerHTML = resultsHtml;
         }
