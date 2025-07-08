@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نمایش اطلاعات از Google Sheets</title>
     <style>
+        .data-section {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -21,17 +26,55 @@
 </head>
 <body>
     <div id="data-container">
-        <table id="data-table">
-            <thead>
-                <tr>
-                    <th>تاریخ</th>
-                    <th>نام کاربری</th>
-                    <th>بج نامبر</th>
-                    <th>میزان پرداخت</th>
-                </tr>
-            </thead>
-            <tbody id="results"></tbody>
-        </table>
+        <h2>داده‌های Google Sheets</h2>
+        <div id="results"></div> <!-- اینجا داده‌ها نمایش داده می‌شوند -->
+    </div>
+
+    <div>
+        <h3>ساعت:</h3>
+        <div id="time1"></div>
+        <h3>نام کاربری:</h3>
+        <div id="user1"></div>
+        <h3>بج نامبر:</h3>
+        <div id="number1"></div>
+        <h3>میزان پرداخت:</h3>
+        <div id="pay1"></div>
+
+        <h3>ساعت:</h3>
+        <div id="time2"></div>
+        <h3>نام کاربری:</h3>
+        <div id="user2"></div>
+        <h3>بج نامبر:</h3>
+        <div id="number2"></div>
+        <h3>میزان پرداخت:</h3>
+        <div id="pay2"></div>
+
+        <h3>ساعت:</h3>
+        <div id="time3"></div>
+        <h3>نام کاربری:</h3>
+        <div id="user3"></div>
+        <h3>بج نامبر:</h3>
+        <div id="number3"></div>
+        <h3>میزان پرداخت:</h3>
+        <div id="pay3"></div>
+
+        <h3>ساعت:</h3>
+        <div id="time4"></div>
+        <h3>نام کاربری:</h3>
+        <div id="user4"></div>
+        <h3>بج نامبر:</h3>
+        <div id="number4"></div>
+        <h3>میزان پرداخت:</h3>
+        <div id="pay4"></div>
+
+        <h3>ساعت:</h3>
+        <div id="time5"></div>
+        <h3>نام کاربری:</h3>
+        <div id="user5"></div>
+        <h3>بج نامبر:</h3>
+        <div id="number5"></div>
+        <h3>میزان پرداخت:</h3>
+        <div id="pay5"></div>
     </div>
 
     <script>
@@ -57,17 +100,14 @@
             // مرتب‌سازی داده‌ها بر اساس تاریخ (فرض بر این است که تاریخ در ستون اول است)
             dataArray.sort((a, b) => new Date(b[0]) - new Date(a[0]));
 
-            let resultsHtml = '';
-            // فقط ردیف‌های 2 تا 5 را نمایش می‌دهیم
+            // نمایش داده‌ها در بخش‌های جداگانه
             for (let i = 0; i < Math.min(dataArray.length, 5); i++) {
-                resultsHtml += '<tr>';
-                dataArray[i].forEach(cell => {
-                    resultsHtml += `<td>${cell}</td>`;
-                });
-                resultsHtml += '</tr>';
+                // نمایش داده‌ها در بخش‌های خاص
+                document.getElementById(`time${i + 1}`).innerText = dataArray[i][0]; // ساعت
+                document.getElementById(`user${i + 1}`).innerText = dataArray[i][1]; // نام کاربری
+                document.getElementById(`number${i + 1}`).innerText = dataArray[i][2]; // بج نامبر
+                document.getElementById(`pay${i + 1}`).innerText = dataArray[i][3]; // میزان پرداخت
             }
-
-            document.getElementById('results').innerHTML = resultsHtml;
         }
 
         // بارگذاری اولیه داده‌ها
