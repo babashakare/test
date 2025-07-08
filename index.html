@@ -58,8 +58,11 @@
             document.getElementById('results').innerHTML = resultsHtml;
         }
 
-        // بارگذاری داده‌ها
+        // بارگذاری اولیه داده‌ها
         fetchData();
+
+        // به‌روزرسانی داده‌ها هر 10 ثانیه
+        setInterval(fetchData, 10000); // 10000 میلی‌ثانیه = 10 ثانیه
     </script>
 </body>
 </html>
