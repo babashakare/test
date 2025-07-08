@@ -21,7 +21,6 @@
 </head>
 <body>
     <div id="data-container">
-        <h2>داده‌های Google Sheets</h2>
         <table id="data-table">
             <thead>
                 <tr>
@@ -43,14 +42,27 @@
             const data = await response.text();
             const parsedData = new window.DOMParser().parseFromString(data, "text/html");
             const rows = parsedData.querySelectorAll("table tbody tr");
-            let resultsHtml = '';
+            let dataArray = [];
 
-            // فقط ردیف‌های 2 تا 5 را نمایش می‌دهیم
-            for (let i = 1; i < Math.min(rows.length, 5); i++) {
+            // استخراج داده‌ها از ردیف‌ها
+            for (let i = 1; i < rows.length; i++) {
                 const cells = rows[i].querySelectorAll("td");
-                resultsHtml += '<tr>';
+                const rowData = [];
                 cells.forEach(cell => {
-                    resultsHtml += `<td>${cell.innerText}</td>`;
+                    rowData.push(cell.innerText);
+                });
+                dataArray.push(rowData);
+            }
+
+            // مرتب‌سازی داده‌ها بر اساس تاریخ (فرض بر این است که تاریخ در ستون اول است)
+            dataArray.sort((a, b) => new Date(b[0]) - new Date(a[0]));
+
+            let resultsHtml = '';
+            // فقط ردیف‌های 2 تا 5 را نمایش می‌دهیم
+            for (let i = 0; i < Math.min(dataArray.length, 5); i++) {
+                resultsHtml += '<tr>';
+                dataArray[i].forEach(cell => {
+                    resultsHtml += `<td>${cell}</td>`;
                 });
                 resultsHtml += '</tr>';
             }
