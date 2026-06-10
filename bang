@@ -23159,3 +23159,2402 @@
         "stats": {}
     }
 ]
+
+{
+    "log": {
+        "disabled": false,
+        "level": "warn",
+        "timestamp": true
+    },
+    "dns": {
+        "servers": [
+            {
+                "type": "https",
+                "server": "8.8.8.8",
+                "detour": "✅ Selector",
+                "tag": "dns-remote"
+            },
+            {
+                "type": "udp",
+                "server": "8.8.8.8",
+                "tag": "dns-direct"
+            },
+            {
+                "type": "udp",
+                "server": "178.22.122.100",
+                "tag": "dns-anti-sanction"
+            }
+        ],
+        "rules": [
+            {
+                "clash_mode": "Direct",
+                "server": "dns-direct"
+            },
+            {
+                "clash_mode": "Global",
+                "server": "dns-remote"
+            },
+            {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "rule_set": [
+                            "geosite-ir"
+                        ]
+                    },
+                    {
+                        "rule_set": "geoip-ir"
+                    }
+                ],
+                "action": "route",
+                "server": "dns-direct"
+            },
+            {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "rule_set": [
+                            "geosite-cn"
+                        ]
+                    },
+                    {
+                        "rule_set": "geoip-cn"
+                    }
+                ],
+                "action": "route",
+                "server": "dns-direct"
+            },
+            {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "rule_set": [
+                            "geosite-category-ru"
+                        ]
+                    },
+                    {
+                        "rule_set": "geoip-ru"
+                    }
+                ],
+                "action": "route",
+                "server": "dns-direct"
+            },
+            {
+                "rule_set": [
+                    "geosite-openai",
+                    "geosite-google-deepmind",
+                    "geosite-microsoft",
+                    "geosite-amd"
+                ],
+                "action": "route",
+                "server": "dns-anti-sanction"
+            }
+        ],
+        "strategy": "prefer_ipv4",
+        "independent_cache": true
+    },
+    "inbounds": [
+        {
+            "type": "tun",
+            "tag": "tun-in",
+            "address": [
+                "172.19.0.1/28"
+            ],
+            "mtu": 9000,
+            "auto_route": true,
+            "strict_route": true,
+            "stack": "mixed"
+        },
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "127.0.0.1",
+            "listen_port": 2080
+        }
+    ],
+    "outbounds": [
+        {
+            "tag": "👑 1-  VIP Trial | 24 Hours : 80",
+            "type": "vless",
+            "server": "testmax.migmigkoko1.workers.dev",
+            "server_port": 80,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiTVYyenpEb1lJR081WiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 2-  VIP Trial | 24 Hours : 80",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 80,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoibnNrcDVzQ3BmN2dNaiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 3 - VIP Trial | 24 Hours - IPv4 : 80",
+            "type": "vless",
+            "server": "188.114.97.3",
+            "server_port": 80,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoib0I3emlIUWg5VkxwVyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 4 - VIP Trial | 24 Hours - IPv4 : 80",
+            "type": "vless",
+            "server": "188.114.96.3",
+            "server_port": 80,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiUmx1N0JHb0hiN3prRHQiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 5 - VIP Trial | 24 Hours - IPv6 : 80",
+            "type": "vless",
+            "server": "[2a06:98c1:3121::3]",
+            "server_port": 80,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoieHNXaGNKWXpvVUhnMzYiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 6 - VIP Trial | 24 Hours - IPv6 : 80",
+            "type": "vless",
+            "server": "[2a06:98c1:3120::3]",
+            "server_port": 80,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiVVZmOE9HSThZQkJRIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 7-  VIP Trial | 24 Hours : 8080",
+            "type": "vless",
+            "server": "testmax.migmigkoko1.workers.dev",
+            "server_port": 8080,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiUzdvUHAxUWRGbCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 8-  VIP Trial | 24 Hours : 8080",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 8080,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiR09meG9WVGdabFY3OTdkZiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 9 - VIP Trial | 24 Hours - IPv4 : 8080",
+            "type": "vless",
+            "server": "188.114.97.3",
+            "server_port": 8080,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiaEhPSlpIYW9oU1RaWU1qIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 10 - VIP Trial | 24 Hours - IPv4 : 8080",
+            "type": "vless",
+            "server": "188.114.96.3",
+            "server_port": 8080,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoib09kVVljZ3pTQzNRSU5zIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 11 - VIP Trial | 24 Hours - IPv6 : 8080",
+            "type": "vless",
+            "server": "[2a06:98c1:3121::3]",
+            "server_port": 8080,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiRGMyYU1sZkIiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 12 - VIP Trial | 24 Hours - IPv6 : 8080",
+            "type": "vless",
+            "server": "[2a06:98c1:3120::3]",
+            "server_port": 8080,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoielQ1SmdrNUNJUSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 13-  VIP Trial | 24 Hours : 8880",
+            "type": "vless",
+            "server": "testmax.migmigkoko1.workers.dev",
+            "server_port": 8880,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiNnRUcjU3VHRBUDlHdlkyZCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 14-  VIP Trial | 24 Hours : 8880",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 8880,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiZXpheWVIWTV5eGFMSjY5IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 15 - VIP Trial | 24 Hours - IPv4 : 8880",
+            "type": "vless",
+            "server": "188.114.97.3",
+            "server_port": 8880,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiNXQ5NzNFM0ZvNXpWNzA4IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 16 - VIP Trial | 24 Hours - IPv4 : 8880",
+            "type": "vless",
+            "server": "188.114.96.3",
+            "server_port": 8880,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiODlPNWd6VWt1IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 17 - VIP Trial | 24 Hours - IPv6 : 8880",
+            "type": "vless",
+            "server": "[2a06:98c1:3121::3]",
+            "server_port": 8880,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiOVhxcjk2ZnFNOHRySCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 18 - VIP Trial | 24 Hours - IPv6 : 8880",
+            "type": "vless",
+            "server": "[2a06:98c1:3120::3]",
+            "server_port": 8880,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiaWNYdE1MYVROTCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 19-  VIP Trial | 24 Hours : 2052",
+            "type": "vless",
+            "server": "testmax.migmigkoko1.workers.dev",
+            "server_port": 2052,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoicnFia1RzbldKIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 20-  VIP Trial | 24 Hours : 2052",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 2052,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiRzlMRTVQYTJaRVY2Y24wbiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 21 - VIP Trial | 24 Hours - IPv4 : 2052",
+            "type": "vless",
+            "server": "188.114.97.3",
+            "server_port": 2052,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiYmVYT2s0eW1aVTZDSE4iLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 22 - VIP Trial | 24 Hours - IPv4 : 2052",
+            "type": "vless",
+            "server": "188.114.96.3",
+            "server_port": 2052,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiN0pOZkwzNFVtIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 23 - VIP Trial | 24 Hours - IPv6 : 2052",
+            "type": "vless",
+            "server": "[2a06:98c1:3121::3]",
+            "server_port": 2052,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiUXZMU3ZMR0Z3RW8iLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 24 - VIP Trial | 24 Hours - IPv6 : 2052",
+            "type": "vless",
+            "server": "[2a06:98c1:3120::3]",
+            "server_port": 2052,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiZm5TdFIyRFp0UjFscSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 25-  VIP Trial | 24 Hours : 2082",
+            "type": "vless",
+            "server": "testmax.migmigkoko1.workers.dev",
+            "server_port": 2082,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiREF0VzQzamFOMlBtIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 26-  VIP Trial | 24 Hours : 2082",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 2082,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiU0U2M3Q5cXVmV2MiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 27 - VIP Trial | 24 Hours - IPv4 : 2082",
+            "type": "vless",
+            "server": "188.114.97.3",
+            "server_port": 2082,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiSFB5b3dsU2dXWUQiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 28 - VIP Trial | 24 Hours - IPv4 : 2082",
+            "type": "vless",
+            "server": "188.114.96.3",
+            "server_port": 2082,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiQWYyV0N6VjkzIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 29 - VIP Trial | 24 Hours - IPv6 : 2082",
+            "type": "vless",
+            "server": "[2a06:98c1:3121::3]",
+            "server_port": 2082,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiQUhHNGpIMVZCQ0lnM2h2IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 30 - VIP Trial | 24 Hours - IPv6 : 2082",
+            "type": "vless",
+            "server": "[2a06:98c1:3120::3]",
+            "server_port": 2082,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiSXlBOWkyNHcwZ3lnIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 31-  VIP Trial | 24 Hours : 2086",
+            "type": "vless",
+            "server": "testmax.migmigkoko1.workers.dev",
+            "server_port": 2086,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiZWNsS0tjZXhSR2N4IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 32-  VIP Trial | 24 Hours : 2086",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 2086,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiN05CWlBzZVoiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 33 - VIP Trial | 24 Hours - IPv4 : 2086",
+            "type": "vless",
+            "server": "188.114.97.3",
+            "server_port": 2086,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiSXp1bkV5ZDM5cVQiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 34 - VIP Trial | 24 Hours - IPv4 : 2086",
+            "type": "vless",
+            "server": "188.114.96.3",
+            "server_port": 2086,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoibnNEbjRYS1JrRmsiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 35 - VIP Trial | 24 Hours - IPv6 : 2086",
+            "type": "vless",
+            "server": "[2a06:98c1:3121::3]",
+            "server_port": 2086,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoidDM5T29wMHI4bkk2dWo0YiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 36 - VIP Trial | 24 Hours - IPv6 : 2086",
+            "type": "vless",
+            "server": "[2a06:98c1:3120::3]",
+            "server_port": 2086,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiVmlpNW4wbHRITUdNMyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 37-  VIP Trial | 24 Hours : 2095",
+            "type": "vless",
+            "server": "testmax.migmigkoko1.workers.dev",
+            "server_port": 2095,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiYmJraG5LVGlVd3ciLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 38-  VIP Trial | 24 Hours : 2095",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 2095,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiTkpucFRleGxsYiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 39 - VIP Trial | 24 Hours - IPv4 : 2095",
+            "type": "vless",
+            "server": "188.114.97.3",
+            "server_port": 2095,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiR01ER2xLd0xwQWMzIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 40 - VIP Trial | 24 Hours - IPv4 : 2095",
+            "type": "vless",
+            "server": "188.114.96.3",
+            "server_port": 2095,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiOE9WaTdESFFoIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 41 - VIP Trial | 24 Hours - IPv6 : 2095",
+            "type": "vless",
+            "server": "[2a06:98c1:3121::3]",
+            "server_port": 2095,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoicGxvV3k4clpxME9CNyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 42 - VIP Trial | 24 Hours - IPv6 : 2095",
+            "type": "vless",
+            "server": "[2a06:98c1:3120::3]",
+            "server_port": 2095,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiOUVlUjlHcVQiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 43-  VIP Trial | 24 Hours : 443",
+            "type": "vless",
+            "server": "testmax.migmigkoko1.workers.dev",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "TEsTMAx.mIgmiGkokO1.wOrkErS.dEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiQ0xCREd5YkwiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 44-  VIP Trial | 24 Hours : 443",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "testmax.MigMigkoKO1.WORkErs.DeV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoibjVXVWYyTlRZMTFBOUEyMSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 45 - VIP Trial | 24 Hours - IPv4 : 443",
+            "type": "vless",
+            "server": "188.114.97.3",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tESTmax.MIgMIgKOko1.worKErs.DEV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoickZFaDhYVDZSIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 46 - VIP Trial | 24 Hours - IPv4 : 443",
+            "type": "vless",
+            "server": "188.114.96.3",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "TEStMAx.MigMIGkOKO1.WOrKErS.deV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiYlFlT09OS2xqRXJYdXdmIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 47 - VIP Trial | 24 Hours - IPv6 : 443",
+            "type": "vless",
+            "server": "[2a06:98c1:3121::3]",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "TeSTmAX.migmIGKoko1.wORKerS.DEV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoibjBiODRmQXNkRXFGNm4iLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 48 - VIP Trial | 24 Hours - IPv6 : 443",
+            "type": "vless",
+            "server": "[2a06:98c1:3120::3]",
+            "server_port": 443,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "TEstMAX.MigmiGKoKo1.WOrkeRs.dEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiT0tzNFJRb0wyOFBKWHVUYyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 49-  VIP Trial | 24 Hours : 8443",
+            "type": "vless",
+            "server": "testmax.migmigkoko1.workers.dev",
+            "server_port": 8443,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tesTMAx.migMIGKoKO1.wOrkERS.dEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiQjlLTXhRcGVDUjNBWDFtIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 50-  VIP Trial | 24 Hours : 8443",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 8443,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEstmAX.MiGMIgKOkO1.WorkErS.dEV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiZGZ0ZldTT2xtcDhLIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 51 - VIP Trial | 24 Hours - IPv4 : 8443",
+            "type": "vless",
+            "server": "188.114.97.3",
+            "server_port": 8443,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEstmAX.mIgmIGkOKO1.wORkeRS.DeV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoid0s5b1lHdEdJd1IiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 52 - VIP Trial | 24 Hours - IPv4 : 8443",
+            "type": "vless",
+            "server": "188.114.96.3",
+            "server_port": 8443,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEstMAX.MigMIgKoKO1.wORkErs.DEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiZHRJYllqTjJEdyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 53 - VIP Trial | 24 Hours - IPv6 : 8443",
+            "type": "vless",
+            "server": "[2a06:98c1:3121::3]",
+            "server_port": 8443,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "teSTMAx.migmIgkOko1.WOrKERs.Dev",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoicFJESWJlSG1IdSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 54 - VIP Trial | 24 Hours - IPv6 : 8443",
+            "type": "vless",
+            "server": "[2a06:98c1:3120::3]",
+            "server_port": 8443,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEstmax.miGMIGKokO1.WORKerS.DEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoicmFwamRaVWVIeCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 55-  VIP Trial | 24 Hours : 2053",
+            "type": "vless",
+            "server": "testmax.migmigkoko1.workers.dev",
+            "server_port": 2053,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "teSTmax.migmIgkoKo1.worKeRs.Dev",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiUkI4MkZ3YmZWV1JxbHZuIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 56-  VIP Trial | 24 Hours : 2053",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 2053,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "TestmAX.MiGMIGkoko1.wORkErS.dev",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiU3pkVW00aXlmMCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 57 - VIP Trial | 24 Hours - IPv4 : 2053",
+            "type": "vless",
+            "server": "188.114.97.3",
+            "server_port": 2053,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEstmaX.MigmIgKOkO1.woRKERs.Dev",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoicGNrTGVyaEJac1NjIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 58 - VIP Trial | 24 Hours - IPv4 : 2053",
+            "type": "vless",
+            "server": "188.114.96.3",
+            "server_port": 2053,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEstmAx.MigMigkOKO1.WorkErs.dEV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoieE1LTFBEdnJDTzl4TCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 59 - VIP Trial | 24 Hours - IPv6 : 2053",
+            "type": "vless",
+            "server": "[2a06:98c1:3121::3]",
+            "server_port": 2053,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEStMAX.MIgmIgkOko1.wORKerS.dEV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiVmtEbkRsMWtlNiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 60 - VIP Trial | 24 Hours - IPv6 : 2053",
+            "type": "vless",
+            "server": "[2a06:98c1:3120::3]",
+            "server_port": 2053,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "TEstmax.migmiGkokO1.wOrKeRS.DEV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiRXNtaG1pNlpiWjl0ciIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 61-  VIP Trial | 24 Hours : 2083",
+            "type": "vless",
+            "server": "testmax.migmigkoko1.workers.dev",
+            "server_port": 2083,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEsTmAx.MIGMIGKoko1.wORKErS.DeV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiU3pKSGZNTUVydVFCaiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 62-  VIP Trial | 24 Hours : 2083",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 2083,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "teSTmaX.MIgmIGKOkO1.WOrKers.DEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiWThZckdVWmh6ZmxmRmZkIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 63 - VIP Trial | 24 Hours - IPv4 : 2083",
+            "type": "vless",
+            "server": "188.114.97.3",
+            "server_port": 2083,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEStMAx.MIgmIGkOKo1.wORkERS.dEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiYmFCQ25McHBYcmJnbjNGNiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 64 - VIP Trial | 24 Hours - IPv4 : 2083",
+            "type": "vless",
+            "server": "188.114.96.3",
+            "server_port": 2083,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tesTmax.MIgMigkoko1.wOrKERs.DeV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiZWpZRGdWRmJzIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 65 - VIP Trial | 24 Hours - IPv6 : 2083",
+            "type": "vless",
+            "server": "[2a06:98c1:3121::3]",
+            "server_port": 2083,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "teSTmAX.mIgmIGkOKo1.wORKErs.dev",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoidnplOVpuN0V3RmdTdiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 66 - VIP Trial | 24 Hours - IPv6 : 2083",
+            "type": "vless",
+            "server": "[2a06:98c1:3120::3]",
+            "server_port": 2083,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "TEStMAX.MIgMIgkOKO1.WOrKeRS.DeV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoidnZCQ0JhWkxsVG1kSkRvIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 67-  VIP Trial | 24 Hours : 2087",
+            "type": "vless",
+            "server": "testmax.migmigkoko1.workers.dev",
+            "server_port": 2087,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "teStmAx.mIgMIgKOko1.WoRKers.DEV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoibFlrZDFBRXE1YTM2STFTVSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 68-  VIP Trial | 24 Hours : 2087",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 2087,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "TeStmaX.MIGMIgKOkO1.wOrKERS.Dev",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiNmlPVWR0VUFLejhDTSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 69 - VIP Trial | 24 Hours - IPv4 : 2087",
+            "type": "vless",
+            "server": "188.114.97.3",
+            "server_port": 2087,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "TESTmax.MIgMiGKoKo1.WoRkErs.dEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoieXNjRHlmNFozc3o1ZDExUyIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 70 - VIP Trial | 24 Hours - IPv4 : 2087",
+            "type": "vless",
+            "server": "188.114.96.3",
+            "server_port": 2087,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "TEsTmax.MiGMIGKOKo1.worKErS.DEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiTWtwcVlKbmxkYXc3YlBlIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 71 - VIP Trial | 24 Hours - IPv6 : 2087",
+            "type": "vless",
+            "server": "[2a06:98c1:3121::3]",
+            "server_port": 2087,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEStmax.MigmigKoKo1.worKeRS.dEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiR2hNalZLYndyYSIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 72 - VIP Trial | 24 Hours - IPv6 : 2087",
+            "type": "vless",
+            "server": "[2a06:98c1:3120::3]",
+            "server_port": 2087,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "TeSTMaX.migMiGKoKO1.WorKeRs.DeV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiamJLb2lGd3pEIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 73-  VIP Trial | 24 Hours : 2096",
+            "type": "vless",
+            "server": "testmax.migmigkoko1.workers.dev",
+            "server_port": 2096,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEStMax.mIGmiGkokO1.WoRkeRS.Dev",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoidG4ydzlqWVdOc0pZIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 74-  VIP Trial | 24 Hours : 2096",
+            "type": "vless",
+            "server": "www.speedtest.net",
+            "server_port": 2096,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEStMaX.MigMiGkOko1.WoRKers.deV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiVFJCckVTY0FVckszdCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 75 - VIP Trial | 24 Hours - IPv4 : 2096",
+            "type": "vless",
+            "server": "188.114.97.3",
+            "server_port": 2096,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEsTMAx.MIGmiGkoko1.wOrKeRS.Dev",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiRVRJaG15bVoySEVtMnVvIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 76 - VIP Trial | 24 Hours - IPv4 : 2096",
+            "type": "vless",
+            "server": "188.114.96.3",
+            "server_port": 2096,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "TEStmaX.miGMiGKokO1.wOrkERs.DEv",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiRkdUcXI3TWEyV3UxWHU1IiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 77 - VIP Trial | 24 Hours - IPv6 : 2096",
+            "type": "vless",
+            "server": "[2a06:98c1:3121::3]",
+            "server_port": 2096,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "tEStmax.mIgMIGKOKO1.woRKeRs.DeV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoieWpTeHpZUjRuIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "tag": "👑 78 - VIP Trial | 24 Hours - IPv6 : 2096",
+            "type": "vless",
+            "server": "[2a06:98c1:3120::3]",
+            "server_port": 2096,
+            "tcp_fast_open": false,
+            "uuid": "523bbc62-7556-4c1f-87cf-b35997b7e855",
+            "packet_encoding": "",
+            "network": "tcp",
+            "tls": {
+                "enabled": true,
+                "server_name": "teStmax.MiGMigKoko1.WorkeRs.deV",
+                "record_fragment": false,
+                "insecure": false,
+                "alpn": [
+                    "http/1.1"
+                ],
+                "utls": {
+                    "enabled": true,
+                    "fingerprint": "chrome"
+                }
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiandXbXpEWUFlU0NCRUhLIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ==",
+                "max_early_data": 2560,
+                "early_data_header_name": "Sec-WebSocket-Protocol",
+                "headers": {
+                    "Host": "testmax.migmigkoko1.workers.dev"
+                }
+            }
+        },
+        {
+            "type": "selector",
+            "tag": "✅ Selector",
+            "outbounds": [
+                "👑 Best Ping 🚀",
+                "👑 1-  VIP Trial | 24 Hours : 80",
+                "👑 2-  VIP Trial | 24 Hours : 80",
+                "👑 3 - VIP Trial | 24 Hours - IPv4 : 80",
+                "👑 4 - VIP Trial | 24 Hours - IPv4 : 80",
+                "👑 5 - VIP Trial | 24 Hours - IPv6 : 80",
+                "👑 6 - VIP Trial | 24 Hours - IPv6 : 80",
+                "👑 7-  VIP Trial | 24 Hours : 8080",
+                "👑 8-  VIP Trial | 24 Hours : 8080",
+                "👑 9 - VIP Trial | 24 Hours - IPv4 : 8080",
+                "👑 10 - VIP Trial | 24 Hours - IPv4 : 8080",
+                "👑 11 - VIP Trial | 24 Hours - IPv6 : 8080",
+                "👑 12 - VIP Trial | 24 Hours - IPv6 : 8080",
+                "👑 13-  VIP Trial | 24 Hours : 8880",
+                "👑 14-  VIP Trial | 24 Hours : 8880",
+                "👑 15 - VIP Trial | 24 Hours - IPv4 : 8880",
+                "👑 16 - VIP Trial | 24 Hours - IPv4 : 8880",
+                "👑 17 - VIP Trial | 24 Hours - IPv6 : 8880",
+                "👑 18 - VIP Trial | 24 Hours - IPv6 : 8880",
+                "👑 19-  VIP Trial | 24 Hours : 2052",
+                "👑 20-  VIP Trial | 24 Hours : 2052",
+                "👑 21 - VIP Trial | 24 Hours - IPv4 : 2052",
+                "👑 22 - VIP Trial | 24 Hours - IPv4 : 2052",
+                "👑 23 - VIP Trial | 24 Hours - IPv6 : 2052",
+                "👑 24 - VIP Trial | 24 Hours - IPv6 : 2052",
+                "👑 25-  VIP Trial | 24 Hours : 2082",
+                "👑 26-  VIP Trial | 24 Hours : 2082",
+                "👑 27 - VIP Trial | 24 Hours - IPv4 : 2082",
+                "👑 28 - VIP Trial | 24 Hours - IPv4 : 2082",
+                "👑 29 - VIP Trial | 24 Hours - IPv6 : 2082",
+                "👑 30 - VIP Trial | 24 Hours - IPv6 : 2082",
+                "👑 31-  VIP Trial | 24 Hours : 2086",
+                "👑 32-  VIP Trial | 24 Hours : 2086",
+                "👑 33 - VIP Trial | 24 Hours - IPv4 : 2086",
+                "👑 34 - VIP Trial | 24 Hours - IPv4 : 2086",
+                "👑 35 - VIP Trial | 24 Hours - IPv6 : 2086",
+                "👑 36 - VIP Trial | 24 Hours - IPv6 : 2086",
+                "👑 37-  VIP Trial | 24 Hours : 2095",
+                "👑 38-  VIP Trial | 24 Hours : 2095",
+                "👑 39 - VIP Trial | 24 Hours - IPv4 : 2095",
+                "👑 40 - VIP Trial | 24 Hours - IPv4 : 2095",
+                "👑 41 - VIP Trial | 24 Hours - IPv6 : 2095",
+                "👑 42 - VIP Trial | 24 Hours - IPv6 : 2095",
+                "👑 43-  VIP Trial | 24 Hours : 443",
+                "👑 44-  VIP Trial | 24 Hours : 443",
+                "👑 45 - VIP Trial | 24 Hours - IPv4 : 443",
+                "👑 46 - VIP Trial | 24 Hours - IPv4 : 443",
+                "👑 47 - VIP Trial | 24 Hours - IPv6 : 443",
+                "👑 48 - VIP Trial | 24 Hours - IPv6 : 443",
+                "👑 49-  VIP Trial | 24 Hours : 8443",
+                "👑 50-  VIP Trial | 24 Hours : 8443",
+                "👑 51 - VIP Trial | 24 Hours - IPv4 : 8443",
+                "👑 52 - VIP Trial | 24 Hours - IPv4 : 8443",
+                "👑 53 - VIP Trial | 24 Hours - IPv6 : 8443",
+                "👑 54 - VIP Trial | 24 Hours - IPv6 : 8443",
+                "👑 55-  VIP Trial | 24 Hours : 2053",
+                "👑 56-  VIP Trial | 24 Hours : 2053",
+                "👑 57 - VIP Trial | 24 Hours - IPv4 : 2053",
+                "👑 58 - VIP Trial | 24 Hours - IPv4 : 2053",
+                "👑 59 - VIP Trial | 24 Hours - IPv6 : 2053",
+                "👑 60 - VIP Trial | 24 Hours - IPv6 : 2053",
+                "👑 61-  VIP Trial | 24 Hours : 2083",
+                "👑 62-  VIP Trial | 24 Hours : 2083",
+                "👑 63 - VIP Trial | 24 Hours - IPv4 : 2083",
+                "👑 64 - VIP Trial | 24 Hours - IPv4 : 2083",
+                "👑 65 - VIP Trial | 24 Hours - IPv6 : 2083",
+                "👑 66 - VIP Trial | 24 Hours - IPv6 : 2083",
+                "👑 67-  VIP Trial | 24 Hours : 2087",
+                "👑 68-  VIP Trial | 24 Hours : 2087",
+                "👑 69 - VIP Trial | 24 Hours - IPv4 : 2087",
+                "👑 70 - VIP Trial | 24 Hours - IPv4 : 2087",
+                "👑 71 - VIP Trial | 24 Hours - IPv6 : 2087",
+                "👑 72 - VIP Trial | 24 Hours - IPv6 : 2087",
+                "👑 73-  VIP Trial | 24 Hours : 2096",
+                "👑 74-  VIP Trial | 24 Hours : 2096",
+                "👑 75 - VIP Trial | 24 Hours - IPv4 : 2096",
+                "👑 76 - VIP Trial | 24 Hours - IPv4 : 2096",
+                "👑 77 - VIP Trial | 24 Hours - IPv6 : 2096",
+                "👑 78 - VIP Trial | 24 Hours - IPv6 : 2096"
+            ],
+            "interrupt_exist_connections": false
+        },
+        {
+            "type": "direct",
+            "tag": "direct"
+        },
+        {
+            "type": "urltest",
+            "tag": "👑 Best Ping 🚀",
+            "outbounds": [
+                "👑 1-  VIP Trial | 24 Hours : 80",
+                "👑 2-  VIP Trial | 24 Hours : 80",
+                "👑 3 - VIP Trial | 24 Hours - IPv4 : 80",
+                "👑 4 - VIP Trial | 24 Hours - IPv4 : 80",
+                "👑 5 - VIP Trial | 24 Hours - IPv6 : 80",
+                "👑 6 - VIP Trial | 24 Hours - IPv6 : 80",
+                "👑 7-  VIP Trial | 24 Hours : 8080",
+                "👑 8-  VIP Trial | 24 Hours : 8080",
+                "👑 9 - VIP Trial | 24 Hours - IPv4 : 8080",
+                "👑 10 - VIP Trial | 24 Hours - IPv4 : 8080",
+                "👑 11 - VIP Trial | 24 Hours - IPv6 : 8080",
+                "👑 12 - VIP Trial | 24 Hours - IPv6 : 8080",
+                "👑 13-  VIP Trial | 24 Hours : 8880",
+                "👑 14-  VIP Trial | 24 Hours : 8880",
+                "👑 15 - VIP Trial | 24 Hours - IPv4 : 8880",
+                "👑 16 - VIP Trial | 24 Hours - IPv4 : 8880",
+                "👑 17 - VIP Trial | 24 Hours - IPv6 : 8880",
+                "👑 18 - VIP Trial | 24 Hours - IPv6 : 8880",
+                "👑 19-  VIP Trial | 24 Hours : 2052",
+                "👑 20-  VIP Trial | 24 Hours : 2052",
+                "👑 21 - VIP Trial | 24 Hours - IPv4 : 2052",
+                "👑 22 - VIP Trial | 24 Hours - IPv4 : 2052",
+                "👑 23 - VIP Trial | 24 Hours - IPv6 : 2052",
+                "👑 24 - VIP Trial | 24 Hours - IPv6 : 2052",
+                "👑 25-  VIP Trial | 24 Hours : 2082",
+                "👑 26-  VIP Trial | 24 Hours : 2082",
+                "👑 27 - VIP Trial | 24 Hours - IPv4 : 2082",
+                "👑 28 - VIP Trial | 24 Hours - IPv4 : 2082",
+                "👑 29 - VIP Trial | 24 Hours - IPv6 : 2082",
+                "👑 30 - VIP Trial | 24 Hours - IPv6 : 2082",
+                "👑 31-  VIP Trial | 24 Hours : 2086",
+                "👑 32-  VIP Trial | 24 Hours : 2086",
+                "👑 33 - VIP Trial | 24 Hours - IPv4 : 2086",
+                "👑 34 - VIP Trial | 24 Hours - IPv4 : 2086",
+                "👑 35 - VIP Trial | 24 Hours - IPv6 : 2086",
+                "👑 36 - VIP Trial | 24 Hours - IPv6 : 2086",
+                "👑 37-  VIP Trial | 24 Hours : 2095",
+                "👑 38-  VIP Trial | 24 Hours : 2095",
+                "👑 39 - VIP Trial | 24 Hours - IPv4 : 2095",
+                "👑 40 - VIP Trial | 24 Hours - IPv4 : 2095",
+                "👑 41 - VIP Trial | 24 Hours - IPv6 : 2095",
+                "👑 42 - VIP Trial | 24 Hours - IPv6 : 2095",
+                "👑 43-  VIP Trial | 24 Hours : 443",
+                "👑 44-  VIP Trial | 24 Hours : 443",
+                "👑 45 - VIP Trial | 24 Hours - IPv4 : 443",
+                "👑 46 - VIP Trial | 24 Hours - IPv4 : 443",
+                "👑 47 - VIP Trial | 24 Hours - IPv6 : 443",
+                "👑 48 - VIP Trial | 24 Hours - IPv6 : 443",
+                "👑 49-  VIP Trial | 24 Hours : 8443",
+                "👑 50-  VIP Trial | 24 Hours : 8443",
+                "👑 51 - VIP Trial | 24 Hours - IPv4 : 8443",
+                "👑 52 - VIP Trial | 24 Hours - IPv4 : 8443",
+                "👑 53 - VIP Trial | 24 Hours - IPv6 : 8443",
+                "👑 54 - VIP Trial | 24 Hours - IPv6 : 8443",
+                "👑 55-  VIP Trial | 24 Hours : 2053",
+                "👑 56-  VIP Trial | 24 Hours : 2053",
+                "👑 57 - VIP Trial | 24 Hours - IPv4 : 2053",
+                "👑 58 - VIP Trial | 24 Hours - IPv4 : 2053",
+                "👑 59 - VIP Trial | 24 Hours - IPv6 : 2053",
+                "👑 60 - VIP Trial | 24 Hours - IPv6 : 2053",
+                "👑 61-  VIP Trial | 24 Hours : 2083",
+                "👑 62-  VIP Trial | 24 Hours : 2083",
+                "👑 63 - VIP Trial | 24 Hours - IPv4 : 2083",
+                "👑 64 - VIP Trial | 24 Hours - IPv4 : 2083",
+                "👑 65 - VIP Trial | 24 Hours - IPv6 : 2083",
+                "👑 66 - VIP Trial | 24 Hours - IPv6 : 2083",
+                "👑 67-  VIP Trial | 24 Hours : 2087",
+                "👑 68-  VIP Trial | 24 Hours : 2087",
+                "👑 69 - VIP Trial | 24 Hours - IPv4 : 2087",
+                "👑 70 - VIP Trial | 24 Hours - IPv4 : 2087",
+                "👑 71 - VIP Trial | 24 Hours - IPv6 : 2087",
+                "👑 72 - VIP Trial | 24 Hours - IPv6 : 2087",
+                "👑 73-  VIP Trial | 24 Hours : 2096",
+                "👑 74-  VIP Trial | 24 Hours : 2096",
+                "👑 75 - VIP Trial | 24 Hours - IPv4 : 2096",
+                "👑 76 - VIP Trial | 24 Hours - IPv4 : 2096",
+                "👑 77 - VIP Trial | 24 Hours - IPv6 : 2096",
+                "👑 78 - VIP Trial | 24 Hours - IPv6 : 2096"
+            ],
+            "url": "https://www.gstatic.com/generate_204",
+            "interrupt_exist_connections": false,
+            "interval": "30s"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "ip_cidr": "172.19.0.2",
+                "action": "hijack-dns"
+            },
+            {
+                "clash_mode": "Direct",
+                "outbound": "direct"
+            },
+            {
+                "clash_mode": "Global",
+                "outbound": "✅ Selector"
+            },
+            {
+                "action": "sniff"
+            },
+            {
+                "protocol": "dns",
+                "action": "hijack-dns"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "direct"
+            },
+            {
+                "network": "udp",
+                "action": "reject"
+            },
+            {
+                "rule_set": [
+                    "geosite-ir",
+                    "geosite-cn",
+                    "geosite-category-ru",
+                    "geosite-openai",
+                    "geosite-google-deepmind",
+                    "geosite-microsoft",
+                    "geosite-amd"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            },
+            {
+                "rule_set": [
+                    "geoip-ir",
+                    "geoip-cn",
+                    "geoip-ru"
+                ],
+                "action": "route",
+                "outbound": "direct"
+            }
+        ],
+        "rule_set": [
+            {
+                "type": "remote",
+                "tag": "geosite-ir",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geoip-ir",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-cn",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-cn.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geoip-cn",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-cn.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-category-ru",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-category-ru.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geoip-ru",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ru.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-openai",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-openai.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-google-deepmind",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-google-deepmind.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-microsoft",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-microsoft.srs",
+                "download_detour": "direct"
+            },
+            {
+                "type": "remote",
+                "tag": "geosite-amd",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-amd.srs",
+                "download_detour": "direct"
+            }
+        ],
+        "auto_detect_interface": true,
+        "default_domain_resolver": {
+            "server": "dns-direct",
+            "strategy": "prefer_ipv4",
+            "rewrite_ttl": 60
+        },
+        "final": "✅ Selector"
+    },
+    "ntp": {
+        "enabled": true,
+        "server": "time.cloudflare.com",
+        "server_port": 123,
+        "domain_resolver": "dns-direct",
+        "interval": "30m",
+        "write_to_system": false
+    },
+    "experimental": {
+        "cache_file": {
+            "enabled": true,
+            "store_fakeip": true
+        },
+        "clash_api": {
+            "external_controller": "127.0.0.1:9090",
+            "external_ui": "ui",
+            "default_mode": "Rule",
+            "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
+            "external_ui_download_detour": "direct"
+        }
+    }
+}
